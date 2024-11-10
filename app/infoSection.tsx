@@ -9,7 +9,7 @@ import Sectionheading from "./components/sectionheading"
 
 import React, { useState } from 'react';
 
-const InfoSection: React.FC<{ setPersonalInfo: (info: any) => void }> = ({ setPersonalInfo }) => {
+const InfoSection: React.FC<{ setPersonalInfo: (info: string | any) => void }> = ({ setPersonalInfo }) => {
     const [formData, setFormData] = useState({
         name: '',
         fatherName: '',
