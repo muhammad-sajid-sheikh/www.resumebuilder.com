@@ -1,9 +1,5 @@
 "use client"
 
-import Image from "next/image"
-import image2 from "../public/images/image2.png"
-
-
 import React, { useState } from 'react';
 
 const Hero: React.FC<{ setImageSrc: (src: string | null) => void }> = ({ setImageSrc }) => {
