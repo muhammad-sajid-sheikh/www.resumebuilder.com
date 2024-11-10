@@ -47,7 +47,7 @@ const InfoSection: React.FC<{ setPersonalInfo: (info: any) => void }> = ({ setPe
                         />
                     </div>
                     <div>
-                        <label className="block text-white font-medium mb-1">Father's Name:</label>
+                        <label className="block text-white font-medium mb-1">Father Name:</label>
                         <input
                             type="text"
                             name="fatherName"

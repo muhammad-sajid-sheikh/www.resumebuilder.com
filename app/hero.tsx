@@ -1,4 +1,4 @@
-"use client"
+
 
 import React, { useState } from 'react';
 
@@ -41,10 +41,17 @@ const Hero: React.FC<{ setImageSrc: (src: string | null) => void }> = ({ setImag
                     Insert Image
                 </button>
             </div>
-
+            <div>
+            {imageSrc && (
+                <div className="mt-5 flex justify-center">
+                    <img src={imageSrc} alt="Selected Image Preview" className="w-[200px] h-[200px] object-cover rounded-lg" />
+                </div>
+            )}
+        </div>
             {/* Hidden File Input */}
             <input
                 type="file"
+                name='image'
                 accept="image/*"
                 onChange={handleImageChange}
                 className="hidden"

@@ -68,7 +68,7 @@ const CV: React.FC<CVProps> = ({ imageSrc, personalInfo, educationInfo, skillsIn
             </div>
             <section>
               <p className="text-xl">
-                To leverage my skills and experience in a dynamic and growth-oriented environment, aiming to contribute effectively to the organization's success while continuously improving my professional abilities.
+                To leverage my skills and experience in a dynamic and growth-oriented environment, aiming to contribute effectively to the organization success while continuously improving my professional abilities.
               </p>
             </section>
 
@@ -104,7 +104,7 @@ const CV: React.FC<CVProps> = ({ imageSrc, personalInfo, educationInfo, skillsIn
               </div>
                        <section id="personal_info" className="space-y-2 md:space-y-4 text-xl">
                             <p>Name: <span>{personalInfo.name}</span></p>
-                            <p>Father's Name: <span>{personalInfo.fatherName}</span></p>
+                            <p>Father Name: <span>{personalInfo.fatherName}</span></p>
                             <p>Phone No: <span>{personalInfo.phone}</span></p>
                             <p>Email: <span>{personalInfo.email}</span></p>
                             <p>CNIC No: <span>{personalInfo.cnic}</span></p>
