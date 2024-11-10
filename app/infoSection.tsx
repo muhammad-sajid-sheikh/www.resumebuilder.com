@@ -1,3 +1,5 @@
+"use client"
+
 import Sectionheading from "./components/sectionheading"
 
 
