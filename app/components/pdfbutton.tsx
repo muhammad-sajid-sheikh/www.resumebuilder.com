@@ -1,6 +1,7 @@
 
 import jsPDF from "jspdf"
 import html2canvas from "html2canvas"
+import dynamic from "next/dynamic";
 
 
 interface PDFButtonProps {
@@ -9,33 +10,25 @@ interface PDFButtonProps {
 
 const PDFButton: React.FC<PDFButtonProps> = ({ targetElementId }) => {
   const handleDownloadPDF = async () => {
+    const html2canvas = (await import('html2canvas')).default;
+    const jsPDF = (await import('jspdf')).default;
+
     const element = document.getElementById(targetElementId);
     if (element) {
-      const canvas = await html2canvas(element, { scale: 2 });
+      const canvas = await html2canvas(element, { scale: 1 });
       const imgData = canvas.toDataURL('image/png');
 
       const pdf = new jsPDF('p', 'mm', 'a4');
-      const imgWidth = 190; // width in mm for an A4 PDF
-      const pageHeight = pdf.internal.pageSize.height;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
 
-      let position = 0;
-      pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+      const imgHeight = (canvas.height * pdfWidth) / canvas.width;
 
-      // If content overflows, add pages
-      if (imgHeight > pageHeight) {
-        let remainingHeight = imgHeight;
-        while (remainingHeight > 0) {
-          position -= pageHeight;
-          pdf.addPage();
-          pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-          remainingHeight -= pageHeight;
-        }
-      }
-
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, imgHeight > pdfHeight ? pdfHeight : imgHeight);
       pdf.save('Resume.pdf');
     }
   };
+
 
   return (
     <div className="flex items-center justify-center pt-8 pb-8" style={{ backgroundImage: "url('/images/bgnew.png')" }}>
